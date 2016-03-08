@@ -3,7 +3,7 @@
 ## 关键是理解刘明星jpush模块中MamashaiReceiver的代码
 
 ``` java
-if (running_activity_name.equals("org.appcelerator.titanium.TiActivity")){
+	if (running_activity_name.equals("org.appcelerator.titanium.TiActivity")){
         	if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())){
 	        	Intent intent2 = new Intent();
 	            intent2.setAction("ACTION_NOTIFICATION");
