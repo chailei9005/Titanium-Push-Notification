@@ -29,7 +29,7 @@
 
 + Android
   + 点击通知-打开APP-页面跳转，之后点击APP图标-打开APP，页面也跳转，原因&解决办法：注册的BroadcastReceiver一定要在该页面关闭的监听中注销掉；
-  + 
+  + 如果index本身就有页面跳转逻辑，比如根据用户缓存进行index-login或者index-home的跳转，那么消息处理的跳转最好放到home中，index里不能连续执行两次跳转，否则只打开最后那个页面。
 
 
   [1]: https://github.com/liumingxing/titanium_module_jpush_android
