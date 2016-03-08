@@ -18,9 +18,15 @@
 + Android
   + app前台运行时，在index.js中创建一个BroadcastReceiver，将该Broadcast Receiver注册到系统“ACTION_NOTIFICATION_OPENED”事件中；Broadcast Receiver中的onReceive方法中，根据消息携带的参数以及不同条件更新UI，对之前的项目，此时更新Tab，加小红点。
   + app后台运行或者关闭时，在index.js代码开始部分，判断activity是否携带了intent参数，如果参数中有符合条件的参数，则执行页面跳转逻辑；
-  
 
-## 如何开发
++ IOS
+  + 要处理的情况有：app前台运行、app后台运行、app被kill
+  + 关键是Ti.Network.registerForPushNotifications中的callback以及Ti.App.addEventListener('resumed')监听
+  + app前台运行时，收到push通知会自动运行callback，在callback中执行加小红点的逻辑，并且在Ti.App.Properties中将一个标志位置为true；
+  + app后台运行时，收到push，点击push打开app，运行callback（应该是先执行callback，后进入resume监听），resume监听中，根据Ti.App.Properties中标志位决定是否需要跳转；
+  + 
+
+## 具体例程
 参见代码以及例程中的注释
 - Android
 - IOS
