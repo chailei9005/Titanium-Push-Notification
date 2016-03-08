@@ -1,6 +1,6 @@
-Welcome to your Appcelerator Titanium Mobile Project
+# Welcome to your Appcelerator Titanium Mobile Project
 
-```java
+``` java
 if (running_activity_name.equals("org.appcelerator.titanium.TiActivity")){
         	if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())){
 	        	Intent intent2 = new Intent();
