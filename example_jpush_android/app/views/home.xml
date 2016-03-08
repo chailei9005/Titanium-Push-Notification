@@ -1,0 +1,5 @@
+<Alloy>
+	<Window id="win" class="container" title="首页">
+		<ActionBar platfor="android" displayHomeAsUp="true" onHomeIconItemSelected="closeWindow" />
+	</Window>
+</Alloy>
