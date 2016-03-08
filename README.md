@@ -24,7 +24,7 @@
   + 关键是Ti.Network.registerForPushNotifications中的callback以及Ti.App.addEventListener('resumed')监听
   + app前台运行时，收到push通知会自动运行callback，在callback中执行加小红点的逻辑，并且在Ti.App.Properties中将一个标志位置为true；
   + app后台运行时，收到push，点击push打开app，运行callback（应该是先执行callback，后进入resume监听），resume监听中，根据Ti.App.Properties中标志位决定是否需要跳转；
-  + 
+  + app被kill，跳转的业务逻辑代码，除了在resume监听里调用，还需要在获取device token成功的回调函数里调用，（操作步骤：kiall app-收到push-点击push，打开app后代码执行顺序：push处理回调（将标志位设置为true）->device token成功回调（根据标志位判断页面跳转））
 
 ## 具体例程
 参见代码以及例程中的注释
@@ -37,5 +37,7 @@
   + 点击通知-打开APP-页面跳转，之后点击APP图标-打开APP，页面也跳转，原因&解决办法：注册的BroadcastReceiver一定要在该页面关闭的监听中注销掉；
   + 如果index本身就有页面跳转逻辑，比如根据用户缓存进行index-login或者index-home的跳转，那么消息处理的跳转最好放到home中，index里不能连续执行两次跳转，否则只打开最后那个页面。
 
++ IOS
+  + app被kill之后，收到通知，点击消息栏中的通知打开app，resume监听中的跳转逻辑未执行，解决办法：如上述IOS实际方案中的描述，跳转的业务逻辑代码，除了在resume监听里调用，还需要在获取device token成功的回调函数里调用
 
   [1]: https://github.com/liumingxing/titanium_module_jpush_android
