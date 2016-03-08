@@ -28,8 +28,8 @@
 
 ## 具体例程
 参见代码以及例程中的注释
-- Android
-- IOS
+- [Android][2]
+- [IOS][3]
 
 ## 开发时遇到的难题以及解决办法：
 
@@ -40,4 +40,7 @@
 + IOS
   + app被kill之后，收到通知，点击消息栏中的通知打开app，resume监听中的跳转逻辑未执行，解决办法：如上述IOS实际方案中的描述，跳转的业务逻辑代码，除了在resume监听里调用，还需要在获取device token成功的回调函数里调用
 
+
   [1]: https://github.com/liumingxing/titanium_module_jpush_android
+  [2]: https://github.com/jackgreentemp/Titanium-Push-Notification/tree/master/example_jpush_android
+  [3]: https://github.com/jackgreentemp/Titanium-Push-Notification/tree/master/example_jpush_ios
