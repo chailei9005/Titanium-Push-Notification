@@ -14,6 +14,12 @@
 - Android无论app是何种状态（前台、后台或者关闭），通知栏都会收到提示；
 - IOS的app前台运行时，无通知栏提示；后台或者关闭状态，才会有通知栏提示；
 
+实际的方案
++ Android
+  + app前台运行时，在index.js中创建一个BroadcastReceiver，将该Broadcast Receiver注册到系统“ACTION_NOTIFICATION_OPENED”事件中；Broadcast Receiver中的onReceive方法中，根据消息携带的参数以及不同条件更新UI，对之前的项目，此时更新Tab，加小红点。
+  + app后台运行或者关闭时，在index.js代码开始部分，判断activity是否携带了intent参数，如果参数中有符合条件的参数，则执行页面跳转逻辑；
+  
+
 ## 如何开发
 参见代码以及例程中的注释
 - Android
@@ -21,8 +27,9 @@
 
 ## 开发时遇到的难题以及解决办法：
 
--Android
--- 重复跳转
++ Android
+  + 点击通知-打开APP-页面跳转，之后点击APP图标-打开APP，页面也跳转，原因&解决办法：注册的BroadcastReceiver一定要在该页面关闭的监听中注销掉；
+  + 
 
 
   [1]: https://github.com/liumingxing/titanium_module_jpush_android
